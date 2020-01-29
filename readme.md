@@ -24,7 +24,7 @@ For Laravel 5.4 and below it necessary to register the service provider
 
 In order to edit the default configuration you may execute:
 ```
-php artisan vendor:publish --provider="A1ex\Cpa\CpaServiceProvider"
+php artisan vendor:publish --provider="Artjoker\Cpa\CpaServiceProvider"
 ```
 
 After that, `config/cpa.php` will be created.
