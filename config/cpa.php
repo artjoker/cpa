@@ -64,14 +64,14 @@ return [
     |
     */
     'sources' => [
-        'admitad'       => true,
-        'credy'         => true,
-        'do_affiliate'  => true,
-        'fin_line'      => true,
-        'lead_gid'      => true,
-        'leads_su'      => true,
+        'admitad'       => false,
+        'credy'         => false,
+        'do_affiliate'  => false,
+        'fin_line'      => false,
+        'lead_gid'      => false,
+        'leads_su'      => false,
         'papa_karlo'    => false,
-        'sales_doubler' => true,
+        'sales_doubler' => false,
         'storm_digital' => false,
     ],
 
