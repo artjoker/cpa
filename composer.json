@@ -13,7 +13,7 @@
     "homepage": "https://github.com/artjoker/cpa",
     "keywords": ["Laravel", "Cpa", "cost per action", "sales doubler", "storm digital", "admitad", "leads su", "do affiliate", "credy", "papa karlo", "fin line", "lead gid"],
     "require": {
-        "illuminate/support": "~5"
+        "illuminate/support": "^5.6|^6.0|^7.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~7.0",
