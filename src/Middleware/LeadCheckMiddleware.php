@@ -38,22 +38,16 @@ class LeadCheckMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (System::getConfig('enable_new_cpa', false)) {
-            try {
-
-                if ($request->has('utm_source')) {
-                    $leadGuard = Config::get('cpa.lead_guard');
-                    $requestUrl = $request->fullUrl();
-                    if (Auth::guard($leadGuard)->check()) {
-                        $this->leadService->create(Auth::guard($leadGuard)->user(), $requestUrl);
-                    } else {
-                        $this->leadService->storeToCookie($requestUrl);
-                    }
-                }
-            } catch (Exception $e) {
-                Log::error('CPA Error: ' . $e->getMessage());
+        if ($request->has('utm_source')) {
+            $leadGuard = Config::get('cpa.lead_guard');
+            $requestUrl = $request->fullUrl();
+            if (Auth::guard($leadGuard)->check()) {
+                $this->leadService->create(Auth::guard($leadGuard)->user(), $requestUrl);
+            } else {
+                $this->leadService->storeToCookie($requestUrl);
             }
         }
+
         return $next($request);
     }
 }
