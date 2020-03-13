@@ -15,6 +15,7 @@ interface LeadSource
     public const LEAD_GID      = 'leadGid';
     public const LEADS_SU      = 'leadsSu';
     public const PAPA_KARLO    = 'papaKarlo';
+    public const PDL_PROFIT    = 'pdlProfit';
     public const SALES_DOUBLER = 'salesDoubler';
     public const STORM_DIGITAL = 'stormDigital';
 }
