@@ -29,6 +29,7 @@ class ParsersFactory
             LeadSource::LEAD_GID      => Cpa\Providers\LeadGid\Lead\Parser::class,
             LeadSource::LEADS_SU      => Cpa\Providers\LeadsSu\Lead\Parser::class,
             LeadSource::PAPA_KARLO    => Cpa\Providers\PapaKarlo\Lead\Parser::class,
+            LeadSource::PDL_PROFIT    => Cpa\Providers\PdlProfit\Lead\Parser::class,
             LeadSource::SALES_DOUBLER => Cpa\Providers\SalesDoubler\Lead\Parser::class,
             LeadSource::STORM_DIGITAL => Cpa\Providers\StormDigital\Lead\Parser::class,
             // add all needed parsers here

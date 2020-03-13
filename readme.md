@@ -39,6 +39,7 @@ This package can be configured by environment variables out-of-box:
 - **PAPA_KARLO_TYPE** - ('offer' or 'goal') postback type for PapaKarlo
 - **PAPA_KARLO_OFFER** - (default: 35) personal offer id for PapaKarlo
 - **PAPA_KARLO_GOAL** - (default: 75) personal goal id for PapaKarlo
+- **PDL_PROFIT_OFFER** - ID of the advertiser in the PDL-Profit system
 - **DO_AFFILIATE_PATH** - path for DoAffiliate API (example: pozichka-ua in http://tracker2.doaffiliate.net/api/pozichka-ua)
 - **LEADS_SU_TOKEN** - token for LeadsSu
 - **ADMITAD_POSTBACK_KEY** - postback request authentication key, constant string 32 char
