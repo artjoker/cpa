@@ -16,8 +16,6 @@ class SendService implements SendServiceInterface
     public const STATUS_PENDING  = 2;
     public const STATUS_DECLINED = 3;
 
-    public $source = LeadSource::FIN_LINE;
-
     /**
      * @var EnvironmentConfig
      */
@@ -30,6 +28,7 @@ class SendService implements SendServiceInterface
     public function __construct(EnvironmentConfig $config)
     {
         $this->config = $config;
+        $this->source = LeadSource::FIN_LINE;
     }
 
 

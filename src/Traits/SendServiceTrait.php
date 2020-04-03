@@ -46,7 +46,7 @@ trait SendServiceTrait
      */
     public function getDomain(): string
     {
-        return Config::get(Str::snake($this->getSource()));
+        return Config::get('cpa.domains.' . Str::snake($this->source));
     }
 
     abstract protected function getRequest(Conversion $conversion, array $params): Request;

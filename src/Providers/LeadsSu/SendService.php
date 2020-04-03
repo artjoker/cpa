@@ -16,8 +16,6 @@ class SendService implements SendServiceInterface
     public const STATUS_PENDING  = 'pending';
     public const STATUS_APPROVED = 'approved';
 
-    public $source = LeadSource::LEADS_SU;
-
     /**
      * @var EnvironmentConfig
      */
@@ -30,6 +28,7 @@ class SendService implements SendServiceInterface
     public function __construct(EnvironmentConfig $config)
     {
         $this->config = $config;
+        $this->source = LeadSource::LEADS_SU;
     }
 
 

@@ -15,8 +15,6 @@ class SendService implements SendServiceInterface
     const PAYMENT_TYPE_SALE = 'sale';
     const PAYMENT_TYPE_LEAD = 'lead';
 
-    public $source = LeadSource::ADMITAD;
-
     /**
      * @var EnvironmentConfig
      */
@@ -29,6 +27,7 @@ class SendService implements SendServiceInterface
     public function __construct(EnvironmentConfig $config)
     {
         $this->config = $config;
+        $this->source = LeadSource::ADMITAD;
     }
 
 
