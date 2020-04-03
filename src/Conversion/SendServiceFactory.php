@@ -63,6 +63,12 @@ class SendServiceFactory
                     'class' => Providers\PapaKarlo\EnvironmentConfig::class,
                 ],
             ],
+            LeadSource::PDL_PROFIT => [
+                'class'  => Providers\PdlProfit\SendService::class,
+                'config' => [
+                    'class' => Providers\PdlProfit\EnvironmentConfig::class,
+                ],
+            ],
             LeadSource::STORM_DIGITAL => [
                 'class'  => Providers\StormDigital\SendService::class,
                 'config' => [
