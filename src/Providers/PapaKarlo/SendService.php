@@ -12,8 +12,6 @@ class SendService implements SendServiceInterface
 {
     use SendServiceTrait;
 
-    public $source = LeadSource::PAPA_KARLO;
-
     /**
      * @var EnvironmentConfig
      */
@@ -26,6 +24,7 @@ class SendService implements SendServiceInterface
     public function __construct(EnvironmentConfig $config)
     {
         $this->config = $config;
+        $this->source = LeadSource::PAPA_KARLO;
     }
 
 
