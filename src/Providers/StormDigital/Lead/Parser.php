@@ -14,7 +14,8 @@ class Parser implements \Artjoker\Cpa\Interfaces\Lead\LeadParser
         'stormdigital',
         'storm',
     ];
-    protected const CLICK_ID   = 'transaction_id';
+    protected const CLICK_ID = 'transaction_id';
+    protected const AFF_ID   = 'aff_id';
 
     public function parse(string $url): ?LeadInfo
     {
@@ -29,7 +30,8 @@ class Parser implements \Artjoker\Cpa\Interfaces\Lead\LeadParser
         return new LeadInfo(
             \Artjoker\Cpa\Interfaces\Lead\LeadSource::STORM_DIGITAL,
             [
-                'clickId' => $query[static::CLICK_ID]
+                'clickId' => $query[static::CLICK_ID],
+                'aid'     => $query[static::AFF_ID] ?? $query['utm_campaign'] ?? null,
             ]
         );
     }
