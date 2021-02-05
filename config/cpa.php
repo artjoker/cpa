@@ -118,7 +118,11 @@ return [
             'fin_line' => [
                 'goal' => 1,
             ],
-            'lead_gid' => [],
+            'lead_gid' => [
+                'type'     => 'goal',
+                'offer_id' => 1,
+                'goal_id'  => 1,
+            ],
             'leads_su' => [
                 'goal' => 0,
             ],
@@ -139,7 +143,12 @@ return [
             ],
             'storm_digital' => [
                 'goal' => 3,
-            ]
+            ],
+            'lead_gid' => [
+                'type'     => 'offer',
+                'offer_id' => 1,
+                'goal_id'  => 1,
+            ],
         ],
 
         'lead' => [

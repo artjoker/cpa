@@ -28,19 +28,38 @@ class SendService implements SendServiceInterface
     }
 
 
-    protected function getRequest(Conversion $conversion): Request
+    /**
+     * @param Conversion $conversion
+     * @param array      $params ['type' => 'offer|goal', 'offer_id' => 'numeric', 'goal_id' => 'numeric']
+     *
+     * @return Request
+     */
+    protected function getRequest(Conversion $conversion, array $params): Request
     {
         $advSub        = $conversion->getId();
         $transactionId = $conversion->getConfig()['click_id'] ?? null;
-        $offerId       = $this->config->getOfferId($conversion->getProduct());
 
-        $queryParams = http_build_query([
-            'offer_id'       => $offerId,
-            'adv_sub'        => $advSub,
-            'transaction_id' => $transactionId,
-        ]);
+        $type    = $params['type'] ?? $this->config->getType($conversion->getProduct());
+        $offerId = $params['offer_id'] ?? $this->config->getOfferId($conversion->getProduct());
+        $goalId  = $params['goal_id'] ?? $this->config->getGoal($conversion->getProduct());
+        $path    = ($type === 'offer') ? 'aff_lsr' : 'aff_goal';
 
-        $url = "{$this->getDomain()}/aff_lsr?{$queryParams}";
+        if ($type === 'offer') {
+            $queryParams = http_build_query([
+                'offer_id'       => $offerId,
+                'adv_sub'        => $advSub,
+                'transaction_id' => $transactionId,
+            ]);
+        } else {
+            $queryParams = http_build_query([
+                'a'              => 'lsr',
+                'goal_id'        => $goalId,
+                'adv_sub'        => $advSub,
+                'transaction_id' => $transactionId,
+            ]);
+        }
+
+        $url = "{$this->getDomain()}/{$path}?{$queryParams}";
 
         return new Request('get', $url);
     }
