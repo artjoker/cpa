@@ -93,6 +93,12 @@ class SendServiceFactory
                     'class' => Providers\Credy\EnvironmentConfig::class,
                 ],
             ],
+            LeadSource::LOANGATE => [
+                'class'  => Providers\Loangate\SendService::class,
+                'config' => [
+                    'class' => Providers\Loangate\EnvironmentConfig::class,
+                ],
+            ],
         ];
         $this->source = $source;
         $this->event = $event;
