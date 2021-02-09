@@ -10,7 +10,7 @@ class EnvironmentConfig
 
     public $keyPrefix = 'LOANGATE_';
 
-    public function getSecure(?string $product = null): int
+    public function getSecure(?string $product = null): string
     {
         return env($this->getProductPrefix($product) . 'SECURE', 0);
     }
