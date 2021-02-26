@@ -34,7 +34,7 @@
                 LeadSource::STORM_DIGITAL => Cpa\Providers\StormDigital\Lead\Parser::class,
                 LeadSource::LOANGATE      => Cpa\Providers\Loangate\Lead\Parser::class,
                 LeadSource::APPSCORP      => Cpa\Providers\Appscorp\Lead\Parser::class,
-                LeadSource::SQUID_LEADERS => Cpa\Providers\Squidleads\Lead\Parser::class,
+                LeadSource::PAP           => Cpa\Providers\Pap\Lead\Parser::class,
                 // add all needed parsers here
             ];
         }

@@ -1,6 +1,6 @@
 <?php
 
-    namespace Artjoker\Cpa\Providers\Squidleads;
+    namespace Artjoker\Cpa\Providers\Pap;
 
     use Artjoker\Cpa\Traits\EnvironmentConfigTrait;
 
@@ -8,7 +8,7 @@
     {
         use EnvironmentConfigTrait;
 
-        public $keyPrefix = 'SQUID_LEADERS_';
+        public $keyPrefix = 'PAP_';
 
         public function getAccountId(?string $product = null): int
         {

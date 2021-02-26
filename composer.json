@@ -11,7 +11,7 @@
     ],
     "minimum-stability": "dev",
     "homepage": "https://github.com/artjoker/cpa",
-    "keywords": ["Laravel", "Cpa", "cost per action", "sales doubler", "storm digital", "admitad", "leads su", "do affiliate", "credy", "papa karlo", "fin line", "lead gid", "loangate"],
+    "keywords": ["Laravel", "Cpa", "cost per action", "sales doubler", "storm digital", "admitad", "leads su", "do affiliate", "credy", "papa karlo", "fin line", "lead gid", "loangate", "Appscorp", "PAP"],
     "require": {
         "illuminate/support": "^5.6|^6.0|^7.0|^8.0"
     },
