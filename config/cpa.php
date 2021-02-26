@@ -75,6 +75,8 @@
             'sales_doubler' => false,
             'storm_digital' => false,
             'loangate'      => false,
+            'appscorp'      => false,
+            'squidleads'    => false,
         ],
 
         /*
@@ -87,7 +89,7 @@
         */
         'domains'           => [
             'admitad'       => 'https://ad.admitad.com',
-            'credy'         => 'http://tracking.credy.eu',
+            'credy'         => 'http://tracking.adcredy.com',
             'do_affiliate'  => 'http://tracker2.doaffiliate.net',
             'fin_line'      => 'http://offers.finline.affise.com',
             'lead_gid'      => 'http://go.leadgid.ru',
@@ -97,6 +99,8 @@
             'sales_doubler' => 'http://rdr.salesdoubler.com.ua',
             'storm_digital' => 'http://offers.stormdigital.affise.com',
             'loangate'      => 'http://offers.loangate.affise.com',
+            'appscorp'      => 'https://iamdataninja.com',
+            'squidleads'    => 'https://squidleads.com',
         ],
 
 
@@ -113,7 +117,6 @@
 
             'purchase' => [
                 'admitad'       => [],
-                'credy'         => [],
                 'do_affiliate'  => [
                     'type' => 'CPA',
                 ],
@@ -136,8 +139,25 @@
                 'storm_digital' => [
                     'goal' => 1,
                 ],
-                'loangate' => [
+                'loangate'      => [
                     'goal' => 1,
+                ],
+                'credy'         => [
+                    'type'     => 'goal',
+                    'offer_id' => 1,
+                    'goal_id'  => 1,
+                ],
+                'appscorp'      => [
+                    'action'    => 'CPL',
+                    'path'      => 'pb', // 'pb/site'
+                    'comission' => 0,
+                    'status'    => 'A',
+                    'campaign'  => 'site.com',
+                ],
+                'squidleads'    => [
+                    'path'        => 'scripts/sale.php',
+                    'action_code' => 'new_loan',
+                    'status'      => 'A',
                 ],
             ],
 
@@ -153,6 +173,10 @@
                     'type'     => 'offer',
                     'offer_id' => 1,
                     'goal_id'  => 1,
+                ],
+                'credy'         => [
+                    'type'     => 'offer',
+                    'offer_id' => 1,
                 ],
             ],
 
