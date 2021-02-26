@@ -49,7 +49,7 @@ class LeadService
         }
 
         /** @var Lead $lead */
-        $lead = Lead::query()->updateOrCreate(
+        $lead = Lead::query()->doesntHave('conversations')->updateOrCreate(
             [
                 'source'  => $leadInfo->getSource(),
                 'user_id' => $modelId,
@@ -121,7 +121,7 @@ class LeadService
             }
 
             /** @var Lead $lead */
-            $lead = Lead::query()->updateOrCreate(
+            $lead = Lead::query()->doesntHave('conversations')->updateOrCreate(
                 [
                     'source'  => $leadInfo->getSource(),
                     'user_id' => $user->getKey(),

@@ -47,4 +47,10 @@ class Lead extends Model
         parent::__construct($attributes);
         $this->table = Config::get('cpa.user_leads_table');
     }
+
+    public function conversations()
+    {
+        return $this->HasMany(Conversion::class, 'user_lead_id');
+    }
+
 }
