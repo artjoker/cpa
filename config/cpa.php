@@ -76,7 +76,7 @@
             'storm_digital' => false,
             'loangate'      => false,
             'appscorp'      => false,
-            'squidleads'    => false,
+            'pap'           => false,
         ],
 
         /*
@@ -100,7 +100,7 @@
             'storm_digital' => 'http://offers.stormdigital.affise.com',
             'loangate'      => 'http://offers.loangate.affise.com',
             'appscorp'      => 'https://iamdataninja.com',
-            'squidleads'    => 'https://squidleads.com',
+            'pap'           => 'https://squidleads.com',
         ],
 
 
@@ -154,7 +154,7 @@
                     'status'    => 'A',
                     'campaign'  => 'site.com',
                 ],
-                'squidleads'    => [
+                'pap'           => [
                     'path'        => 'scripts/sale.php',
                     'action_code' => 'new_loan',
                     'status'      => 'A',

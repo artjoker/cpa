@@ -105,10 +105,10 @@ class SendServiceFactory
                     'class' => Providers\Appscorp\EnvironmentConfig::class,
                 ],
             ],
-            LeadSource::SQUID_LEADERS => [
-                'class'  => Providers\Squidleads\SendService::class,
+            LeadSource::PAP => [
+                'class'  => Providers\Pap\SendService::class,
                 'config' => [
-                    'class' => Providers\Squidleads\EnvironmentConfig::class,
+                    'class' => Providers\Pap\EnvironmentConfig::class,
                 ],
             ],
         ];
