@@ -99,6 +99,18 @@ class SendServiceFactory
                     'class' => Providers\Loangate\EnvironmentConfig::class,
                 ],
             ],
+            LeadSource::APPSCORP => [
+                'class'  => Providers\Appscorp\SendService::class,
+                'config' => [
+                    'class' => Providers\Appscorp\EnvironmentConfig::class,
+                ],
+            ],
+            LeadSource::SQUID_LEADERS => [
+                'class'  => Providers\Squidleads\SendService::class,
+                'config' => [
+                    'class' => Providers\Squidleads\EnvironmentConfig::class,
+                ],
+            ],
         ];
         $this->source = $source;
         $this->event = $event;

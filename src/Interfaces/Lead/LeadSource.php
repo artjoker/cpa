@@ -19,4 +19,6 @@
         public const SALES_DOUBLER = 'salesDoubler';
         public const STORM_DIGITAL = 'stormDigital';
         public const LOANGATE      = 'loangate';
+        public const APPSCORP      = 'appscorp';
+        public const SQUID_LEADERS = 'squidleads';
     }
