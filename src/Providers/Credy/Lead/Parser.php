@@ -2,7 +2,6 @@
 
 namespace Artjoker\Cpa\Providers\Credy\Lead;
 
-
 use Artjoker\Cpa\Interfaces\Lead\LeadSource;
 use Artjoker\Cpa\Lead\LeadInfo;
 use Artjoker\Cpa\Traits\QueryParams;
@@ -12,7 +11,7 @@ class Parser implements \Artjoker\Cpa\Interfaces\Lead\LeadParser
     use QueryParams;
 
     protected const UTM_SOURCE     = 'credy';
-    protected const TRANSACTION_ID = 'tid';
+    protected const TRANSACTION_ID = 'transaction_id';
 
     public function parse(string $url): ?LeadInfo
     {
@@ -27,7 +26,7 @@ class Parser implements \Artjoker\Cpa\Interfaces\Lead\LeadParser
         return new LeadInfo(
             LeadSource::CREDY,
             [
-                'tid' => $query[static::TRANSACTION_ID]
+                'transaction_id' => $query[static::TRANSACTION_ID]
             ]
         );
     }

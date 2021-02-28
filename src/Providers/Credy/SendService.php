@@ -31,7 +31,7 @@
 
         protected function getRequest(Conversion $conversion, array $params): Request
         {
-            $transactionId = $conversion->getConfig()['tid'] ?? null;
+            $transactionId = $conversion->getConfig()['transaction_id'] ?? null;
             $offer         = $offerId = $params['offer_id'] ?? $this->config->getOffer($conversion->getProduct());
             $goalId        = $params['goal_id'] ?? $this->config->getGoal($conversion->getProduct());
             $conversionId  = $conversion->getId();
