@@ -32,7 +32,7 @@
         protected function getRequest(Conversion $conversion, array $params): Request
         {
             $clickId      = $conversion->getConfig()['data1'] ?? null;
-            $gclid        = $conversion->getConfig()['gclid1'] ?? null;
+            $gclid        = $conversion->getConfig()['gclid'] ?? null;
             $conversionId = $conversion->getId();
 
             $path      = $params['path'] ?? null;

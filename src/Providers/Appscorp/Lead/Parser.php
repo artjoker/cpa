@@ -9,7 +9,7 @@
     {
         use QueryParams;
 
-        protected const UTM_SOURCE = 'appscorp';
+        protected const UTM_SOURCE = 'semsale';
         protected const CLICK_ID   = 'data1';
 
         public function parse(string $url): ?LeadInfo
@@ -26,7 +26,8 @@
                 \Artjoker\Cpa\Interfaces\Lead\LeadSource::APPSCORP,
                 [
                     'data1'  => $query[static::CLICK_ID],
-                    'gclid1' => $query['gclid1'] ?? null,
+                    'gclid' => $query['gclid'] ?? null,
+                    'webmaster_id' => $query['webmaster_id'] ?? null,
                 ]
             );
         }
