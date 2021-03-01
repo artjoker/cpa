@@ -10,13 +10,13 @@
          * Web master identifier
          * @var string
          */
-        public $gclid1;
+        public $gclid;
 
         public function rules(): array
         {
             return [
                 'data1'  => 'required|string',
-                'gclid1' => 'required|string',
+                'gclid' => 'required|string',
             ];
         }
     }
