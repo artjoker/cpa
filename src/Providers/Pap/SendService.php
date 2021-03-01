@@ -1,6 +1,6 @@
 <?php
 
-    namespace Artjoker\Cpa\Providers\Squidleads;
+    namespace Artjoker\Cpa\Providers\Pap;
 
     use Artjoker\Cpa\Interfaces\Conversion\SendServiceInterface;
     use Artjoker\Cpa\Interfaces\Lead\LeadSource;
@@ -25,7 +25,7 @@
         public function __construct(EnvironmentConfig $config)
         {
             $this->config = $config;
-            $this->source = LeadSource::SQUID_LEADERS;
+            $this->source = LeadSource::PAP;
         }
 
 

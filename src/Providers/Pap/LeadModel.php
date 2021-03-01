@@ -1,6 +1,6 @@
 <?php
 
-    namespace Artjoker\Cpa\Providers\Squidleads;
+    namespace Artjoker\Cpa\Providers\Pap;
 
     class LeadModel
     {

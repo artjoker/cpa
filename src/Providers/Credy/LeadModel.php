@@ -8,12 +8,12 @@ class LeadModel
      * Transaction identifier
      * @var string
      */
-    public $tid;
+    public $transaction_id;
 
     public function rules(): array
     {
         return [
-            'tid' => 'required|string',
+            'transaction_id' => 'required|string',
         ];
     }
 }

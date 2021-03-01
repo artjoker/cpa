@@ -1,6 +1,6 @@
 <?php
 
-    namespace Artjoker\Cpa\Providers\Squidleads\Lead;
+    namespace Artjoker\Cpa\Providers\Pap\Lead;
 
     use Artjoker\Cpa\Lead\LeadInfo;
     use Artjoker\Cpa\Traits\QueryParams;
@@ -23,7 +23,7 @@
             }
 
             return new LeadInfo(
-                \Artjoker\Cpa\Interfaces\Lead\LeadSource::SQUID_LEADERS,
+                \Artjoker\Cpa\Interfaces\Lead\LeadSource::PAP,
                 [
                     'papid'      => $query[static::CLICK_ID],
                     'utm_medium' => $query['utm_medium'] ?? null,
