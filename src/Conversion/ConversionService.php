@@ -72,6 +72,7 @@ class ConversionService implements ServiceInterface
         ];
 
         $response = $result->getResponse();
+        Log::info("Response for conversion $conversionId : ", [static::class, $response]);
         if ($response !== null) {
             $conversion->response = [
                 'code' => $response->getStatusCode(),
