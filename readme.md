@@ -8,7 +8,7 @@ inspired by wearesho-team/bobra-cpa
 
 Laravel Package for [CPA](https://en.wikipedia.org/wiki/Cost_per_action) networks integration and target customer actions registration in your application.
 Currently supported: [Admitad](https://www.admitad.com/ru/), [Credy](https://www.adcredy.com/), [DoAffiliate](https://www.doaffiliate.net/), [Finline](https://finline.ua/),
- [LeadGid](https://leadgid.eu/), [Leads.su](https://leads.su/), [PapaKarlo](https://papakarlo.com/), [Sales Doubler](https://www.salesdoubler.com.ua/), Storm Digital, Loangate, Appscorp, PAP.
+ [LeadGid](https://leadgid.eu/), [Leads.su](https://leads.su/), [PapaKarlo](https://papakarlo.com/), [Sales Doubler](https://www.salesdoubler.com.ua/), Storm Digital, Loangate, Appscorp, PAP, GoodAff.
 
 ## Installation
 
@@ -118,7 +118,7 @@ If you discover any security related issues, please email author email instead o
 
 ## Credits
 
-[ Alexey Tsinya (A1ex7) @ ArtJoker ][link-author]
+[ Volodymyr Taranenko @ VT2 ][link-author]
 
 ## License
 
