@@ -111,6 +111,12 @@ class SendServiceFactory
                     'class' => Providers\Pap\EnvironmentConfig::class,
                 ],
             ],
+            LeadSource::GOOD_AFF => [
+                'class'  => Providers\GoodAff\SendService::class,
+                'config' => [
+                    'class' => Providers\GoodAff\EnvironmentConfig::class,
+                ],
+            ],
         ];
         $this->source = $source;
         $this->event = $event;

@@ -77,6 +77,7 @@
             'loangate'      => false,
             'appscorp'      => false,
             'pap'           => false,
+            'good_aff'      => false,
         ],
 
         /*
@@ -101,6 +102,7 @@
             'loangate'      => 'http://offers.loangate.affise.com',
             'appscorp'      => 'https://iamdataninja.com',
             'pap'           => 'https://squidleads.com',
+            'good_aff'      => 'https://postback.goodaff.com',
         ],
 
 
@@ -159,6 +161,12 @@
                     'action_code' => 'new_loan',
                     'status'      => 'A',
                 ],
+                'good_aff'      => [
+                    'campaign_id' => '',
+                    'type'        => 'cpa',
+                    'status'      => 'A',
+                ],
+
             ],
 
             'register' => [
