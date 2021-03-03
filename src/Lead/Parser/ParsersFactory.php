@@ -35,6 +35,7 @@
                 LeadSource::LOANGATE      => Cpa\Providers\Loangate\Lead\Parser::class,
                 LeadSource::APPSCORP      => Cpa\Providers\Appscorp\Lead\Parser::class,
                 LeadSource::PAP           => Cpa\Providers\Pap\Lead\Parser::class,
+                LeadSource::GOOD_AFF      => Cpa\Providers\GoodAff\Lead\Parser::class,
                 // add all needed parsers here
             ];
         }
