@@ -75,11 +75,18 @@
 
             $response = $result->getResponse();
 
-            $body = $response->getBody()->getContents();
-            if ($response !== null && is_string($body) && is_array(json_decode($body, true))) {
+            if ($response !== null) {
+
+                $body = $response->getBody()->getContents();
+                if (is_string($body) && !is_array(json_decode($body, true))) {
+                    $body = ['result' => utf8_decode($body)];
+                } elseif (is_string($body) && is_array(json_decode($body, true))) {
+                    $body = json_decode($body, true);
+                }
+
                 $conversion->response = [
                     'code' => $response->getStatusCode(),
-                    'body' => $response->getBody()->getContents(),
+                    'body' => $body,
                 ];
             } else {
                 Log::error("Response for conversion $conversionId does not formed well.", [static::class, $response]);
