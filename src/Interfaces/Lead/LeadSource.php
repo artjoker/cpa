@@ -22,4 +22,5 @@
         public const APPSCORP      = 'appscorp';
         public const PAP           = 'pap';
         public const GOOD_AFF      = 'goodAff';
+        public const FIN_ME        = 'finMe';
     }

@@ -78,6 +78,7 @@
             'appscorp'      => false,
             'pap'           => false,
             'good_aff'      => false,
+            'fin_me'        => false,
         ],
 
         /*
@@ -103,6 +104,7 @@
             'appscorp'      => 'https://iamdataninja.com',
             'pap'           => 'https://squidleads.com',
             'good_aff'      => 'https://postback.goodaff.com',
+            'fin_me'        => 'http://offers.finme.affise.com',
         ],
 
 
@@ -165,6 +167,9 @@
                     'campaign_id' => '',
                     'type'        => 'cpa',
                     'status'      => 'A',
+                ],
+                'fin_me'        => [
+                    'goal' => 1,
                 ],
 
             ],

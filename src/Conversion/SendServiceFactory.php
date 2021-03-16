@@ -57,6 +57,12 @@ class SendServiceFactory
                     'class' => Providers\FinLine\EnvironmentConfig::class,
                 ],
             ],
+            LeadSource::FIN_ME => [
+                'class'  => Providers\FinMe\SendService::class,
+                'config' => [
+                    'class' => Providers\FinMe\EnvironmentConfig::class,
+                ],
+            ],
             LeadSource::PAPA_KARLO => [
                 'class'  => Providers\PapaKarlo\SendService::class,
                 'config' => [
