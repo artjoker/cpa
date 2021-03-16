@@ -26,6 +26,7 @@
                 LeadSource::CREDY         => Cpa\Providers\Credy\Lead\Parser::class,
                 LeadSource::DO_AFFILIATE  => Cpa\Providers\DoAffiliate\Lead\Parser::class,
                 LeadSource::FIN_LINE      => Cpa\Providers\FinLine\Lead\Parser::class,
+                LeadSource::FIN_ME        => Cpa\Providers\FinMe\Lead\Parser::class,
                 LeadSource::LEAD_GID      => Cpa\Providers\LeadGid\Lead\Parser::class,
                 LeadSource::LEADS_SU      => Cpa\Providers\LeadsSu\Lead\Parser::class,
                 LeadSource::PAPA_KARLO    => Cpa\Providers\PapaKarlo\Lead\Parser::class,
