@@ -26,7 +26,8 @@ class Parser implements \Artjoker\Cpa\Interfaces\Lead\LeadParser
         return new LeadInfo(
             \Artjoker\Cpa\Interfaces\Lead\LeadSource::ADMITAD,
             [
-                'uid' => $query[static::UID],
+                'uid'      => $query[static::UID],
+                'utm_term' => $query['utm_term'] ?? null,
             ]
         );
     }
