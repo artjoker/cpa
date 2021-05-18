@@ -123,6 +123,18 @@ class SendServiceFactory
                     'class' => Providers\GoodAff\EnvironmentConfig::class,
                 ],
             ],
+            LeadSource::LET_ME_ADS => [
+                'class'  => Providers\LetMeAds\SendService::class,
+                'config' => [
+                    'class' => Providers\LetMeAds\EnvironmentConfig::class,
+                ],
+            ],
+            LeadSource::GURU_LEADS => [
+                'class'  => Providers\GuruLeads\SendService::class,
+                'config' => [
+                    'class' => Providers\GuruLeads\EnvironmentConfig::class,
+                ],
+            ],
         ];
         $this->source = $source;
         $this->event = $event;

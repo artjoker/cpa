@@ -37,6 +37,8 @@
                 LeadSource::APPSCORP      => Cpa\Providers\Appscorp\Lead\Parser::class,
                 LeadSource::PAP           => Cpa\Providers\Pap\Lead\Parser::class,
                 LeadSource::GOOD_AFF      => Cpa\Providers\GoodAff\Lead\Parser::class,
+                LeadSource::LET_ME_ADS    => Cpa\Providers\LetMeAds\Lead\Parser::class,
+                LeadSource::GURU_LEADS    => Cpa\Providers\GuruLeads\Lead\Parser::class,
                 // add all needed parsers here
             ];
         }

@@ -8,7 +8,7 @@ inspired by wearesho-team/bobra-cpa
 
 Laravel Package for [CPA](https://en.wikipedia.org/wiki/Cost_per_action) networks integration and target customer actions registration in your application.
 Currently supported: [Admitad](https://www.admitad.com/ru/), [Credy](https://www.adcredy.com/), [DoAffiliate](https://www.doaffiliate.net/), [Finline](https://finline.ua/),
- [LeadGid](https://leadgid.eu/), [Leads.su](https://leads.su/), [PapaKarlo](https://papakarlo.com/), [Sales Doubler](https://www.salesdoubler.com.ua/), Storm Digital, Loangate, Appscorp, PAP, GoodAff.
+ [LeadGid](https://leadgid.eu/), [Leads.su](https://leads.su/), [PapaKarlo](https://papakarlo.com/), [Sales Doubler](https://www.salesdoubler.com.ua/), Storm Digital, Loangate, Appscorp, PAP, GoodAff, LetMeAds, GuruLeads.
 
 ## Installation
 
@@ -40,12 +40,14 @@ This package can be configured by environment variables out-of-box:
 - **PAPA_KARLO_OFFER** - (default: 35) personal offer id for PapaKarlo
 - **PAPA_KARLO_GOAL** - (default: 75) personal goal id for PapaKarlo
 - **PDL_PROFIT_OFFER** - ID of the advertiser in the PDL-Profit system
-- **DO_AFFILIATE_PATH** - path for DoAffiliate API (example: pozichka-ua in http://tracker2.doaffiliate.net/api/pozichka-ua)
+- **DO_AFFILIATE_PATH** - path for DoAffiliate API (example: pozichka-ua in http://tracker2.doaffiliate.net/pozichka-ua)
 - **LEADS_SU_TOKEN** - token for LeadsSu
 - **ADMITAD_POSTBACK_KEY** - postback request authentication key, constant string 32 char
 - **ADMITAD_CAMPAIGN_CODE** - AdmitAd defined campaign code, constant string 10 char
 - **ADMITAD_ACTION_CODE** - target action code, get it from AdmitAd
 - **CREDY_OFFER** - offer code, get it from Credy
+- **LET_ME_ADS_PATH** - path for LetMeAds API (example: api/v1.1/y7r/dcfgs1tg:awvv47ghn1jv1f$am/get/postback.json)
+- **GURU_LEADS_PATH** - path for GuruLeads API (example: postback)
 
 If one of key for some CPA network not set 
 postback requests for this network will not be done. 
