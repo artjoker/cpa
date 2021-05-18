@@ -79,6 +79,8 @@
             'pap'           => false,
             'good_aff'      => false,
             'fin_me'        => false,
+            'letmeads'      => false,
+            'guruleads'     => false,
         ],
 
         /*
@@ -105,8 +107,9 @@
             'pap'           => 'https://squidleads.com',
             'good_aff'      => 'https://postback.goodaff.com',
             'fin_me'        => 'http://offers.finme.affise.com',
+            'letmeads'      => 'https://ad.letmeads.com',
+            'guruleads'     => 'https://offers.guruleads.com.ua',
         ],
-
 
         /*
         |--------------------------------------------------------------------------
@@ -170,6 +173,15 @@
                 ],
                 'fin_me'        => [
                     'goal' => 1,
+                ],
+                'letmeads'      => [
+                    'path' => 'api/v1.1/y7r/dcfgs1tg:awvv47ghn1jv1f$am/get/postback.json',
+                    'code' => 'Y',
+                ],
+                'guruleads'      => [
+                    'path' => 'postback',
+                    'goal' => 'loan',
+                    'status' => 1,
                 ],
 
             ],
