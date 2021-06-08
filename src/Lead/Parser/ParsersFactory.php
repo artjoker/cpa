@@ -39,6 +39,7 @@
                 LeadSource::GOOD_AFF      => Cpa\Providers\GoodAff\Lead\Parser::class,
                 LeadSource::LET_ME_ADS    => Cpa\Providers\LetMeAds\Lead\Parser::class,
                 LeadSource::GURU_LEADS    => Cpa\Providers\GuruLeads\Lead\Parser::class,
+                LeadSource::CLICK2MONEY   => Cpa\Providers\Click2Money\Lead\Parser::class,
                 // add all needed parsers here
             ];
         }

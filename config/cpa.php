@@ -81,6 +81,7 @@
             'fin_me'        => false,
             'let_me_ads'    => false,
             'guru_leads'    => false,
+            'click2money'   => false,
         ],
 
         /*
@@ -109,6 +110,7 @@
             'fin_me'        => 'http://offers.finme.affise.com',
             'let_me_ads'    => 'https://ad.letmeads.com',
             'guru_leads'    => 'https://offers.guruleads.com.ua',
+            'click2money'   => 'https://c2mpbtrck.com',
         ],
 
         /*
@@ -182,6 +184,11 @@
                     'path'   => 'postback',
                     'goal'   => 'loan',
                     'status' => 1,
+                ],
+                'click2money'   => [
+                    'path'    => 'cpaCallback',
+                    'action'  => 'approve',
+                    'partner' => '',
                 ],
 
             ],
