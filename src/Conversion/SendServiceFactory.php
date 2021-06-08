@@ -135,6 +135,12 @@ class SendServiceFactory
                     'class' => Providers\GuruLeads\EnvironmentConfig::class,
                 ],
             ],
+            LeadSource::CLICK2MONEY => [
+                'class'  => Providers\Click2Money\SendService::class,
+                'config' => [
+                    'class' => Providers\Click2Money\EnvironmentConfig::class,
+                ],
+            ],
         ];
         $this->source = $source;
         $this->event = $event;

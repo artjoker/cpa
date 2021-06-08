@@ -48,6 +48,7 @@ This package can be configured by environment variables out-of-box:
 - **CREDY_OFFER** - offer code, get it from Credy
 - **LET_ME_ADS_PATH** - path for LetMeAds API (example: api/v1.1/y7r/dcfgs1tg:awvv47ghn1jv1f$am/get/postback.json)
 - **GURU_LEADS_PATH** - path for GuruLeads API (example: postback)
+- **CLICK2MONEY_PATH** - path for Click2Money API (example: cpaCallback)
 
 If one of key for some CPA network not set 
 postback requests for this network will not be done. 
