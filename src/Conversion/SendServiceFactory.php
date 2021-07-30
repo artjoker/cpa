@@ -141,6 +141,12 @@ class SendServiceFactory
                     'class' => Providers\Click2Money\EnvironmentConfig::class,
                 ],
             ],
+            LeadSource::NOLIMIT => [
+                'class'  => Providers\Nolimit\SendService::class,
+                'config' => [
+                    'class' => Providers\Nolimit\EnvironmentConfig::class,
+                ],
+            ],
         ];
         $this->source = $source;
         $this->event = $event;
