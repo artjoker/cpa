@@ -8,7 +8,7 @@ inspired by wearesho-team/bobra-cpa
 
 Laravel Package for [CPA](https://en.wikipedia.org/wiki/Cost_per_action) networks integration and target customer actions registration in your application.
 Currently supported: [Admitad](https://www.admitad.com/ru/), [Credy](https://www.adcredy.com/), [DoAffiliate](https://www.doaffiliate.net/), [Finline](https://finline.ua/),
- [LeadGid](https://leadgid.eu/), [Leads.su](https://leads.su/), [PapaKarlo](https://papakarlo.com/), [Sales Doubler](https://www.salesdoubler.com.ua/), Storm Digital, Loangate, Appscorp, PAP, GoodAff, LetMeAds, GuruLeads.
+ [LeadGid](https://leadgid.eu/), [Leads.su](https://leads.su/), [PapaKarlo](https://papakarlo.com/), [Sales Doubler](https://www.salesdoubler.com.ua/), Storm Digital, Loangate, Appscorp, PAP, GoodAff, LetMeAds, GuruLeads, Nolimit.
 
 ## Installation
 
@@ -49,6 +49,7 @@ This package can be configured by environment variables out-of-box:
 - **LET_ME_ADS_PATH** - path for LetMeAds API (example: api/v1.1/y7r/dcfgs1tg:awvv47ghn1jv1f$am/get/postback.json)
 - **GURU_LEADS_PATH** - path for GuruLeads API (example: postback)
 - **CLICK2MONEY_PATH** - path for Click2Money API (example: cpaCallback)
+- - **NOLIMIT_PATH** - path for Nolimit API (example: postback)
 
 If one of key for some CPA network not set 
 postback requests for this network will not be done. 

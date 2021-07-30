@@ -82,6 +82,7 @@
             'let_me_ads'    => false,
             'guru_leads'    => false,
             'click2money'   => false,
+            'nolimit'       => false,
         ],
 
         /*
@@ -111,6 +112,7 @@
             'let_me_ads'    => 'https://ad.letmeads.com',
             'guru_leads'    => 'https://offers.guruleads.com.ua',
             'click2money'   => 'https://c2mpbtrck.com',
+            'nolimit'       => 'https://offers-nolimit.affise.com',
         ],
 
         /*
@@ -189,6 +191,9 @@
                     'path'    => 'cpaCallback',
                     'action'  => 'approve',
                     'partner' => '',
+                ],
+                'nolimit'       => [
+                    'path' => 'postback',
                 ],
 
             ],
