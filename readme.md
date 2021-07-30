@@ -49,7 +49,7 @@ This package can be configured by environment variables out-of-box:
 - **LET_ME_ADS_PATH** - path for LetMeAds API (example: api/v1.1/y7r/dcfgs1tg:awvv47ghn1jv1f$am/get/postback.json)
 - **GURU_LEADS_PATH** - path for GuruLeads API (example: postback)
 - **CLICK2MONEY_PATH** - path for Click2Money API (example: cpaCallback)
-- - **NOLIMIT_PATH** - path for Nolimit API (example: postback)
+- **NOLIMIT_PATH** - path for Nolimit API (example: postback)
 
 If one of key for some CPA network not set 
 postback requests for this network will not be done. 
