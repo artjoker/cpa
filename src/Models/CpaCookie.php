@@ -28,6 +28,6 @@ class CpaCookie extends Model
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-        $this->table = Config::get('cpa.cpa_cookies_table');
+        $this->table = Config::get('cpa.cookies_table');
     }
 }
