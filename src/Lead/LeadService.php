@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Str;
+use Ramsey\Uuid\Uuid;
 
 class LeadService
 {
@@ -84,7 +85,7 @@ class LeadService
             return null;
         }
 
-        $uuid = Cookie::get(self::COOKIE_KEY) ?? (string) Str::uuid();
+        $uuid = Cookie::get(self::COOKIE_KEY) ?? (string) Uuid::uuid1();
         $cpaCookie = CpaCookie::query()->updateOrCreate(
             ['id' => $uuid],
             [
