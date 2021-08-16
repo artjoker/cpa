@@ -40,7 +40,12 @@ class SendService implements SendServiceInterface
             'v'    => $visitor,
         ]);
 
-        $url = "{$this->getDomain()}/api/{$path}?{$queryParams}";
+        $customParams = '';
+        if (!empty($params['custom_params'])) {
+            $customParams = '&' . http_build_query($params['custom_params']);
+        }
+
+        $url = "{$this->getDomain()}/api/{$path}?{$queryParams}{$customParams}";
 
         return new Request('get', $url);
     }

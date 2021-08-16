@@ -33,13 +33,14 @@
          * Register conversion when goal is achieved
          * e.g. register 'sale' or 'register' event
          *
-         * @param Model|int|string $leadModel    user who performs target action
-         * @param string           $conversionId internal conversion Id, for example orderId or userId
-         * @param string           $event        registered event (declared in config)
+         * @param Model|int|string $leadModel     user who performs target action
+         * @param string           $conversionId  internal conversion Id, for example orderId or userId
+         * @param string           $event         registered event (declared in config)
+         * @param array            $custom_params custom options for postback
          *
          * @return Conversion|null
          */
-        public function register($leadModel, string $conversionId, string $event): ?Conversion
+        public function register($leadModel, string $conversionId, string $event, array $custom_params = []): ?Conversion
         {
             if (empty($event) || !Config::has('cpa.events.' . $event)) {
                 Log::debug("Trying to send conversion {$conversionId} with undefined 'event'", [static::class, $event]);
@@ -66,8 +67,10 @@
             }
 
             /** @var Postback $result */
-            $result              = $sender->send($conversion, $this->getEventParams($event, $source));
-            $conversion->request = [
+            $params                  = $this->getEventParams($event, $source);
+            $params['custom_params'] = $custom_params;
+            $result                  = $sender->send($conversion, $params);
+            $conversion->request     = [
                 'method' => $result->getRequest()->getMethod(),
                 'uri'    => (string)$result->getRequest()->getUri(),
                 'body'   => $result->getRequest()->getBody()->getContents(),

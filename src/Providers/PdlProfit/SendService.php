@@ -43,7 +43,12 @@ class SendService implements SendServiceInterface
             'lead_status'    => $leadStatus,
         ]);
 
-        $url = "{$this->getDomain()}/postback?{$queryParams}";
+        $customParams = '';
+        if (!empty($params['custom_params'])) {
+            $customParams = '&' . http_build_query($params['custom_params']);
+        }
+
+        $url = "{$this->getDomain()}/postback?{$queryParams}{$customParams}";
 
         return new Request('get', $url);
     }

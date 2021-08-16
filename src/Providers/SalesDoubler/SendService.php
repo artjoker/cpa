@@ -28,7 +28,7 @@ class SendService implements SendServiceInterface
     }
 
 
-    protected function getRequest(Conversion $conversion): Request
+    protected function getRequest(Conversion $conversion, array $params): Request
     {
         $clickId = $conversion->getConfig()['clickId'] ?? null;
         $transId = $conversion->getId();
@@ -36,7 +36,12 @@ class SendService implements SendServiceInterface
         $token = $this->config->getToken($conversion->getProduct());
         $id = $this->config->getId($conversion->getProduct());
 
-        $url = "{$this->getDomain()}/in/postback/{$id}/{$clickId}?trans_id={$transId}&aff_id={$affId}&token={$token}";
+        $customParams = '';
+        if (!empty($params['custom_params'])) {
+            $customParams = '&' . http_build_query($params['custom_params']);
+        }
+
+        $url = "{$this->getDomain()}/in/postback/{$id}/{$clickId}?trans_id={$transId}&aff_id={$affId}&token={$token}{$customParams}";
 
         return new Request('get', $url);
     }
