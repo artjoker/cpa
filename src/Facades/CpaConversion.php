@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Facade;
 /**
  * Class CpaConversion
  * @package Artjoker\Cpa\Facades
- * @method static Conversion register($user, string $conversionId, string $event)
+ * @method static Conversion register($user, string $conversionId, string $event, array $custom_params = [])
  *
  * @see \Artjoker\Cpa\Conversion\ConversionService
  */

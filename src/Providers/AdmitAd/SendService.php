@@ -46,7 +46,12 @@ class SendService implements SendServiceInterface
             'payment_type'  => $params['payment_type'] ?? self::PAYMENT_TYPE_SALE,
         ]);
 
-        $url = "{$this->getDomain()}/r?{$queryParams}";
+        $customParams = '';
+        if (!empty($params['custom_params'])) {
+            $customParams = '&' . http_build_query($params['custom_params']);
+        }
+
+        $url = "{$this->getDomain()}/r?{$queryParams}{$customParams}";
 
         return new Request('get', $url);
     }

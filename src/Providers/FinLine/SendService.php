@@ -47,7 +47,12 @@ class SendService implements SendServiceInterface
             'status'    => $status ?? self::STATUS_PENDING,
         ]);
 
-        $url = "{$this->getDomain()}/postback?{$queryParams}";
+        $customParams = '';
+        if (!empty($params['custom_params'])) {
+            $customParams = '&' . http_build_query($params['custom_params']);
+        }
+
+        $url = "{$this->getDomain()}/postback?{$queryParams}{$customParams}";
 
         return new Request('get', $url);
     }

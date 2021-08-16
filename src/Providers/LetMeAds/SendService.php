@@ -43,7 +43,12 @@
                 'code'     => $code,
             ]);
 
-            $url = "{$this->getDomain()}/{$path}?{$queryParams}";
+            $customParams = '';
+            if (!empty($params['custom_params'])) {
+                $customParams = '&' . http_build_query($params['custom_params']);
+            }
+
+            $url = "{$this->getDomain()}/{$path}?{$queryParams}{$customParams}";
 
             return new Request('get', $url);
         }
