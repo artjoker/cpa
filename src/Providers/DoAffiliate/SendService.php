@@ -31,7 +31,7 @@ class SendService implements SendServiceInterface
     protected function getRequest(Conversion $conversion, array $params): Request
     {
         $visitor  = $conversion->getConfig()['visitor'] ?? null;
-        $path = $this->config->getPath($conversion->getProduct());
+        $path = $params['path'] ?? $this->config->getPath($conversion->getProduct());
         $type = $params['type'] ?? 'CPA';
 
         $queryParams = http_build_query([

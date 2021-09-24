@@ -1,54 +1,59 @@
 <?php
 
-namespace Artjoker\Cpa\Providers\StormDigital;
+    namespace Artjoker\Cpa\Providers\StormDigital;
 
-use Artjoker\Cpa\Interfaces\Conversion\SendServiceInterface;
-use Artjoker\Cpa\Interfaces\Lead\LeadSource;
-use Artjoker\Cpa\Models\Conversion;
-use Artjoker\Cpa\Traits\SendServiceTrait;
-use GuzzleHttp\Psr7\Request;
+    use Artjoker\Cpa\Interfaces\Conversion\SendServiceInterface;
+    use Artjoker\Cpa\Interfaces\Lead\LeadSource;
+    use Artjoker\Cpa\Models\Conversion;
+    use Artjoker\Cpa\Traits\SendServiceTrait;
+    use GuzzleHttp\Psr7\Request;
 
-class SendService implements SendServiceInterface
-{
-    use SendServiceTrait;
-
-    /**
-     * @var EnvironmentConfig
-     */
-    protected $config;
-
-    /**
-     * SendService constructor.
-     * @param EnvironmentConfig $config
-     */
-    public function __construct(EnvironmentConfig $config)
+    class SendService implements SendServiceInterface
     {
-        $this->config = $config;
-        $this->source = LeadSource::STORM_DIGITAL;
-    }
+        use SendServiceTrait;
 
+        public const PATH_POSTBACK = 'postback';
 
-    protected function getRequest(Conversion $conversion, array $params): Request
-    {
-        $clickId  = $conversion->getConfig()['clickId'] ?? null;
-        $actionId = $conversion->getId();
-        $secure   = $this->config->getSecure($conversion->getProduct());
-        $goal = $params['goal'] ?? $this->config->getGoal($conversion->getProduct());
+        /**
+         * @var EnvironmentConfig
+         */
+        protected $config;
 
-        $queryParams = http_build_query([
-            'clickid'   => $clickId,
-            'action_id' => $actionId,
-            'goal'      => $goal,
-            'secure'    => $secure,
-        ]);
-
-        $customParams = '';
-        if (!empty($params['custom_params'])) {
-            $customParams = '&' . http_build_query($params['custom_params']);
+        /**
+         * SendService constructor.
+         *
+         * @param EnvironmentConfig $config
+         */
+        public function __construct(EnvironmentConfig $config)
+        {
+            $this->config = $config;
+            $this->source = LeadSource::STORM_DIGITAL;
         }
 
-        $url = "{$this->getDomain()}/postback?{$queryParams}{$customParams}";
 
-        return new Request('get', $url);
+        protected function getRequest(Conversion $conversion, array $params): Request
+        {
+            $clickId  = $conversion->getConfig()['clickId'] ?? null;
+            $actionId = $conversion->getId();
+
+            $secure = $params['secure'] ?? $this->config->getSecure($conversion->getProduct());
+            $goal   = $params['goal'] ?? $this->config->getGoal($conversion->getProduct());
+            $path   = $params['path'] ?? self::PATH_POSTBACK;
+
+            $queryParams = http_build_query([
+                'clickid'   => $clickId,
+                'action_id' => $actionId,
+                'goal'      => $goal,
+                'secure'    => $secure,
+            ]);
+
+            $customParams = '';
+            if (!empty($params['custom_params'])) {
+                $customParams = '&' . http_build_query($params['custom_params']);
+            }
+
+            $url = "{$this->getDomain()}/{$path}?{$queryParams}{$customParams}";
+
+            return new Request('get', $url);
+        }
     }
-}

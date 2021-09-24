@@ -127,12 +127,26 @@
         'events'            => [
 
             'purchase' => [
-                'admitad'       => [],
+                'pdl_profit'    => [
+                    'path'        => '',
+                    'lead_id'     => null,
+                    'lead_status' => null,
+                ],
+                'admitad'       => [
+                    'postback'      => 1,
+                    'campaign_code' => '',
+                    'postback_key'  => '',
+                    'action_code'   => 1,
+                    'tariff_code'   => 1,
+                    'payment_type'  => 'sale',
+                ],
                 'do_affiliate'  => [
+                    'path' => '',
                     'type' => 'CPA',
                 ],
                 'fin_line'      => [
-                    'goal' => 1,
+                    'status' => 1,
+                    'goal'   => 1,
                 ],
                 'lead_gid'      => [
                     'type'     => 'goal',
@@ -140,23 +154,29 @@
                     'goal_id'  => 1,
                 ],
                 'leads_su'      => [
-                    'goal' => 0,
+                    'token'  => '',
+                    'goal'   => 0,
+                    'status' => 'approved',
                 ],
                 'papa_karlo'    => [
                     'type'     => 'offer',
                     'offer_id' => 1,
                 ],
-                'sales_doubler' => [],
+                'sales_doubler' => [
+                    'token' => '',
+                    'id'    => '',
+                ],
                 'storm_digital' => [
-                    'goal' => 1,
+                    'goal'   => 1,
+                    'secure' => '',
                 ],
                 'loangate'      => [
-                    'goal' => 1,
+                    'goal'   => 1,
+                    'secure' => '',
                 ],
                 'credy'         => [
-                    'type'     => 'goal',
+                    'type'     => 'offer',
                     'offer_id' => 1,
-                    'goal_id'  => 1,
                 ],
                 'appscorp'      => [
                     'action'    => 'CPL',
@@ -166,6 +186,7 @@
                     'campaign'  => 'site.com',
                 ],
                 'pap'           => [
+                    'account_id'  => '',
                     'path'        => 'scripts/sale.php',
                     'action_code' => 'new_loan',
                     'status'      => 'A',
@@ -199,12 +220,18 @@
             ],
 
             'register' => [
+                'leads_su'      => [
+                    'token'  => '',
+                    'goal'   => 0,
+                    'status' => 'pending',
+                ],
                 'papa_karlo'    => [
                     'type'    => 'goal',
                     'goal_id' => '1',
                 ],
                 'storm_digital' => [
-                    'goal' => 3,
+                    'goal'   => 3,
+                    'secure' => '',
                 ],
                 'lead_gid'      => [
                     'type'     => 'offer',
@@ -212,12 +239,17 @@
                     'goal_id'  => 1,
                 ],
                 'credy'         => [
-                    'type'     => 'offer',
-                    'offer_id' => 1,
+                    'type'    => 'goal',
+                    'goal_id' => 1,
                 ],
             ],
 
             'lead' => [
+                'leads_su'      => [
+                    'token'  => '',
+                    'goal'   => 0,
+                    'status' => 'rejected',
+                ],
                 'papa_karlo'    => [
                     'type'    => 'goal',
                     'goal_id' => '2',
