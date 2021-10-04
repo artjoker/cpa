@@ -147,6 +147,12 @@ class SendServiceFactory
                     'class' => Providers\Nolimit\EnvironmentConfig::class,
                 ],
             ],
+            LeadSource::MONEY_GO => [
+                'class'  => Providers\MoneyGo\SendService::class,
+                'config' => [
+                    'class' => Providers\MoneyGo\EnvironmentConfig::class,
+                ],
+            ],
         ];
         $this->source = $source;
         $this->event = $event;

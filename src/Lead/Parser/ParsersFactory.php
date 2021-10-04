@@ -41,6 +41,7 @@
                 LeadSource::GURU_LEADS    => Cpa\Providers\GuruLeads\Lead\Parser::class,
                 LeadSource::CLICK2MONEY   => Cpa\Providers\Click2Money\Lead\Parser::class,
                 LeadSource::NOLIMIT       => Cpa\Providers\Nolimit\Lead\Parser::class,
+                LeadSource::MONEY_GO      => Cpa\Providers\MoneyGo\Lead\Parser::class,
                 // add all needed parsers here
             ];
         }

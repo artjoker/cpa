@@ -83,6 +83,7 @@
             'guru_leads'    => false,
             'click2money'   => false,
             'nolimit'       => false,
+            'money_go'      => false,
         ],
 
         /*
@@ -113,6 +114,7 @@
             'guru_leads'    => 'https://offers.guruleads.com.ua',
             'click2money'   => 'https://c2mpbtrck.com',
             'nolimit'       => 'https://offers-nolimit.affise.com',
+            'money_go'      => 'https://moneygo.com.ua',
         ],
 
         /*
@@ -215,6 +217,10 @@
                 ],
                 'nolimit'       => [
                     'path' => 'postback',
+                ],
+                'money_go'      => [
+                    'path'        => 'postback',
+                    'loan_number' => 0,
                 ],
 
             ],

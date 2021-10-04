@@ -27,4 +27,5 @@
         public const GURU_LEADS    = 'guruLeads';
         public const CLICK2MONEY   = 'click2money';
         public const NOLIMIT       = 'nolimit';
+        public const MONEY_GO      = 'moneyGo';
     }
