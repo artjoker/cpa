@@ -84,6 +84,7 @@
             'click2money'   => false,
             'nolimit'       => false,
             'money_go'      => false,
+            'sd_top'        => false,
         ],
 
         /*
@@ -115,6 +116,7 @@
             'click2money'   => 'https://c2mpbtrck.com',
             'nolimit'       => 'https://offers-nolimit.affise.com',
             'money_go'      => 'https://moneygo.com.ua',
+            'sd_top'        => 'http://rdr.salesdoubler.com.ua',
         ],
 
         /*
@@ -221,6 +223,11 @@
                 'money_go'      => [
                     'path'        => 'postback',
                     'loan_number' => 0,
+                ],
+                'sd_top'        => [
+                    'path'  => 'in/postback',
+                    'token' => '',
+                    'id'    => '',
                 ],
 
             ],

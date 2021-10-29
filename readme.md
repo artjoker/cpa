@@ -51,6 +51,8 @@ This package can be configured by environment variables out-of-box:
 - **CLICK2MONEY_PATH** - path for Click2Money API (example: cpaCallback)
 - **NOLIMIT_PATH** - path for Nolimit API (example: postback)
 - **MONEY_GO_PATH** - path for MoneyGo API (example: postback)
+- **SD_TOP_ID** - personal id for request to SD_Top
+- **SD_TOP_TOKEN** - token for request URI for SD_Top
 
 If one of key for some CPA network not set 
 postback requests for this network will not be done. 
