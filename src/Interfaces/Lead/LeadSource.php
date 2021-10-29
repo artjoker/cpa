@@ -28,5 +28,5 @@
         public const CLICK2MONEY   = 'click2money';
         public const NOLIMIT       = 'nolimit';
         public const MONEY_GO      = 'moneyGo';
-        public const SD_TOP        = 'SDTop';
+        public const SD_TOP        = 'sdTop';
     }
