@@ -12,12 +12,7 @@
 
         protected const AFF_SUB = 'aff_sub';
         protected const AFF_ID  = 'aff_id';
-        protected const UTM_SOURCES
-                                = [
-                'cpanet_salesdoubler',
-                'cpanet_salesdubler',
-                'salesdoubler',
-            ];
+        protected const UTM_SOURCES = ['sd_top'];
 
         public function parse(string $url): ?LeadInfo
         {
