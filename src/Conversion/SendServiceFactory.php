@@ -153,6 +153,12 @@ class SendServiceFactory
                     'class' => Providers\MoneyGo\EnvironmentConfig::class,
                 ],
             ],
+            LeadSource::SD_TOP => [
+                'class'  => Providers\SdTop\SendService::class,
+                'config' => [
+                    'class' => Providers\SdTop\EnvironmentConfig::class,
+                ],
+            ],
         ];
         $this->source = $source;
         $this->event = $event;
