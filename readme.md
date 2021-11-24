@@ -8,7 +8,7 @@ inspired by wearesho-team/bobra-cpa
 
 Laravel Package for [CPA](https://en.wikipedia.org/wiki/Cost_per_action) networks integration and target customer actions registration in your application.
 Currently supported: [Admitad](https://www.admitad.com/ru/), [Credy](https://www.adcredy.com/), [DoAffiliate](https://www.doaffiliate.net/), [Finline](https://finline.ua/),
- [LeadGid](https://leadgid.eu/), [Leads.su](https://leads.su/), [PapaKarlo](https://papakarlo.com/), [Sales Doubler](https://www.salesdoubler.com.ua/), Storm Digital, Loangate, Appscorp, PAP, GoodAff, LetMeAds, GuruLeads, Nolimit, MoneyGo.
+ [LeadGid](https://leadgid.eu/), [Leads.su](https://leads.su/), [PapaKarlo](https://papakarlo.com/), [Sales Doubler](https://www.salesdoubler.com.ua/), Storm Digital, Loangate, Appscorp, PAP, GoodAff, LetMeAds, GuruLeads, Nolimit, MoneyGo, LeadLoan.
 
 ## Installation
 
@@ -53,6 +53,7 @@ This package can be configured by environment variables out-of-box:
 - **MONEY_GO_PATH** - path for MoneyGo API (example: postback)
 - **SD_TOP_ID** - personal id for request to SD_Top
 - **SD_TOP_TOKEN** - token for request URI for SD_Top
+- **LEAD_LOAN_PATH** - path for LeadLoan API (example: postback)
 
 If one of key for some CPA network not set 
 postback requests for this network will not be done. 
