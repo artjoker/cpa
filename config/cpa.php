@@ -85,6 +85,7 @@
             'nolimit'       => false,
             'money_go'      => false,
             'sd_top'        => false,
+            'lead_loan'     => false,
         ],
 
         /*
@@ -117,6 +118,7 @@
             'nolimit'       => 'https://offers-nolimit.affise.com',
             'money_go'      => 'https://moneygo.com.ua',
             'sd_top'        => 'http://rdr.salesdoubler.com.ua',
+            'lead_loan'     => 'https://offers-leadloan.affise.com',
         ],
 
         /*
@@ -228,6 +230,10 @@
                     'path'  => 'in/postback',
                     'token' => '',
                     'id'    => '',
+                ],
+                'lead_loan'     => [
+                    'path' => 'postback',
+                    'goal' => 1,
                 ],
 
             ],

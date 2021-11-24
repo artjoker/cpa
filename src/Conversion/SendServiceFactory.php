@@ -159,6 +159,12 @@ class SendServiceFactory
                     'class' => Providers\SdTop\EnvironmentConfig::class,
                 ],
             ],
+            LeadSource::LEAD_LOAN => [
+                'class'  => Providers\LeadLoan\SendService::class,
+                'config' => [
+                    'class' => Providers\LeadLoan\EnvironmentConfig::class,
+                ],
+            ],
         ];
         $this->source = $source;
         $this->event = $event;
