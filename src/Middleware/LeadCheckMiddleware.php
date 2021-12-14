@@ -38,7 +38,7 @@ class LeadCheckMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if ($request->has('utm_source')) {
+        if ($request->has('utm_source') || (!$request->has('utm_source') && $request->has('source'))) {
             $leadGuard = Config::get('cpa.lead_guard');
             $requestUrl = $request->fullUrl();
             if (Auth::guard($leadGuard)->check()) {
