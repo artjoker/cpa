@@ -30,4 +30,5 @@
         public const MONEY_GO      = 'moneyGo';
         public const SD_TOP        = 'sdTop';
         public const LEAD_LOAN     = 'leadLoan';
+        public const AD_WORDS      = 'adWords';
     }

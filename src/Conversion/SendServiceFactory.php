@@ -165,6 +165,12 @@ class SendServiceFactory
                     'class' => Providers\LeadLoan\EnvironmentConfig::class,
                 ],
             ],
+            LeadSource::AD_WORDS => [
+                'class'  => Providers\AdWords\SendService::class,
+                'config' => [
+                    'class' => Providers\AdWords\EnvironmentConfig::class,
+                ],
+            ]
         ];
         $this->source = $source;
         $this->event = $event;
