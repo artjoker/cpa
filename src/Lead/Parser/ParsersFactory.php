@@ -44,6 +44,7 @@
                 LeadSource::MONEY_GO      => Cpa\Providers\MoneyGo\Lead\Parser::class,
                 LeadSource::SD_TOP        => Cpa\Providers\SdTop\Lead\Parser::class,
                 LeadSource::LEAD_LOAN     => Cpa\Providers\LeadLoan\Lead\Parser::class,
+                LeadSource::AD_WORDS      => Cpa\Providers\AdWords\Lead\Parser::class,
                 // add all needed parsers here
             ];
         }
