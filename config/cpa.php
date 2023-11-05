@@ -64,28 +64,30 @@
         |
         */
         'sources'           => [
-            'admitad'       => false,
-            'credy'         => false,
-            'do_affiliate'  => false,
-            'fin_line'      => false,
-            'lead_gid'      => false,
-            'leads_su'      => false,
-            'papa_karlo'    => false,
-            'pdl_profit'    => false,
-            'sales_doubler' => false,
-            'storm_digital' => false,
-            'loangate'      => false,
-            'appscorp'      => false,
-            'pap'           => false,
-            'good_aff'      => false,
-            'fin_me'        => false,
-            'let_me_ads'    => false,
-            'guru_leads'    => false,
-            'click2money'   => false,
-            'nolimit'       => false,
-            'money_go'      => false,
-            'sd_top'        => false,
-            'lead_loan'     => false,
+            'admitad'        => false,
+            'credy'          => false,
+            'do_affiliate'   => false,
+            'fin_line'       => false,
+            'lead_gid'       => false,
+            'leads_su'       => false,
+            'papa_karlo'     => false,
+            'pdl_profit'     => false,
+            'sales_doubler'  => false,
+            'storm_digital'  => false,
+            'loangate'       => false,
+            'appscorp'       => false,
+            'pap'            => false,
+            'good_aff'       => false,
+            'fin_me'         => false,
+            'let_me_ads'     => false,
+            'guru_leads'     => false,
+            'click2money'    => false,
+            'nolimit'        => false,
+            'money_go'       => false,
+            'sd_top'         => false,
+            'lead_loan'      => false,
+            'ad_words'       => false,
+            'cashtan_credit' => false, // custom CPA network
         ],
 
         /*
@@ -235,6 +237,8 @@
                     'path' => 'postback',
                     'goal' => 1,
                 ],
+                'ad_words'      => [],
+                'cashtan_credit' => [],
 
             ],
 
@@ -261,6 +265,8 @@
                     'type'    => 'goal',
                     'goal_id' => 1,
                 ],
+                'ad_words'      => [],
+                'cashtan_credit' => [],
             ],
 
             'lead' => [
@@ -276,7 +282,33 @@
                 'storm_digital' => [
                     'goal' => 4,
                 ],
+                'ad_words'      => [],
+                'cashtan_credit' => [],
             ],
+        ],
+
+        /*
+        |--------------------------------------------------------------------------
+        | CPA utm_sources for AdWords
+        |--------------------------------------------------------------------------
+        |
+        | This is the utm_sources tags for AdWords parsing.
+        |
+        */
+        'ad_words'          => [
+            'utm_sources' => ['adwords', 'google'],
+        ],
+
+        /*
+        |--------------------------------------------------------------------------
+        | CPA utm_sources for this custom project
+        |--------------------------------------------------------------------------
+        |
+        | This is the utm_sources tags for this custom project parsing.
+        |
+        */
+        'cashtan_credit'     => [
+            'utm_sources' => ['cashtancredit'],
         ],
 
     ];
