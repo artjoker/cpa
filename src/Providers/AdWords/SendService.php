@@ -45,7 +45,7 @@
         {
             // Create a mock and queue two responses.
             $mock = new MockHandler([
-                new Response(200, ['X-Foo' => 'Bar'], 'Ad Words Body'),
+                new Response(200, ['X-Foo' => 'Bar'], 'AdWords'),
                 new Response(202, ['Content-Length' => 0])
             ]);
 
@@ -63,6 +63,6 @@
          */
         protected function getRequest(Conversion $conversion, array $params): Request
         {
-            return new Request('GET', 'test');
+            return new Request('GET', 'AdWords');
         }
     }
