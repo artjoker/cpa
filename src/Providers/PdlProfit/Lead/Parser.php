@@ -27,7 +27,8 @@ class Parser implements \Artjoker\Cpa\Interfaces\Lead\LeadParser
             \Artjoker\Cpa\Interfaces\Lead\LeadSource::PDL_PROFIT,
             [
                 'click_id' => $query[static::CLICK_ID],
-                'utm_term' => $query['utm_term'] ?? null,
+                'cpa_id'   => $query['cpa_id'] ?? null,
+                'web_id'   => $query['web_id'] ?? null,
             ]
         );
     }
