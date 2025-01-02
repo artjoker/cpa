@@ -108,7 +108,7 @@
             'papa_karlo'    => 'http://targetme.go2cloud.org',
             'pdl_profit'    => 'https://tds.pdl-profit.com',
             'sales_doubler' => 'http://rdr.salesdoubler.com.ua',
-            'storm_digital' => 'http://offers.stormdigital.affise.com',
+            'storm_digital' => 'https://offers.stormdigital.io',
             'loangate'      => 'http://offers.loangate.affise.com',
             'appscorp'      => 'https://iamdataninja.com',
             'pap'           => 'https://squidleads.com',
@@ -176,7 +176,6 @@
                 ],
                 'storm_digital' => [
                     'goal'   => 1,
-                    'secure' => '',
                 ],
                 'loangate'      => [
                     'goal'   => 1,
@@ -254,7 +253,6 @@
                 ],
                 'storm_digital' => [
                     'goal'   => 3,
-                    'secure' => '',
                 ],
                 'lead_gid'      => [
                     'type'     => 'offer',
