@@ -36,15 +36,13 @@
             $clickId  = $conversion->getConfig()['clickId'] ?? null;
             $actionId = $conversion->getId();
 
-            $secure = $params['secure'] ?? $this->config->getSecure($conversion->getProduct());
             $goal   = $params['goal'] ?? $this->config->getGoal($conversion->getProduct());
             $path   = $params['path'] ?? self::PATH_POSTBACK;
 
             $queryParams = http_build_query([
                 'clickid'   => $clickId,
-                'action_id' => $actionId,
                 'goal'      => $goal,
-                'secure'    => $secure,
+                'action_id' => $actionId,
             ]);
 
             $customParams = '';

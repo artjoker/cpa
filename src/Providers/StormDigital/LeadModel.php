@@ -13,13 +13,13 @@ class LeadModel
      * Web master identifier
      * @var string
      */
-    public $aid;
+    public $webid;
 
     public function rules(): array
     {
         return [
             'clickId' => 'required|string',
-            'aid'     => 'string'
+            'webid'   => 'string'
         ];
     }
 }

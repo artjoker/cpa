@@ -10,11 +10,6 @@ class EnvironmentConfig
 
     public $keyPrefix = 'STORM_DIGITAL_';
 
-    public function getSecure(?string $product = null): string
-    {
-        return env($this->getProductPrefix($product) . 'SECURE', '');
-    }
-
     public function getGoal(?string $product = null): int
     {
         return env($this->getProductPrefix($product) . 'GOAL', 1);
