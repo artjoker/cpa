@@ -8,6 +8,8 @@
     use Artjoker\Cpa\Interfaces\Lead\LeadSource;
     use Illuminate\Support\Facades\Config;
     use Illuminate\Support\Str;
+    use App\Repositories\CpaNetworkRepository;
+    use App\Lead\Parser\UniversalParser;
 
     class ParsersFactory
     {
@@ -17,10 +19,16 @@
         private $parsers;
 
         /**
+         * @var CpaNetworkRepository
+         */
+        private $network_repository;
+
+        /**
          * ParserFactory constructor.
          */
-        public function __construct()
+        public function __construct(CpaNetworkRepository $network_repository = null)
         {
+            $this->network_repository = $network_repository ?? app(CpaNetworkRepository::class);
             $this->parsers = [
                 LeadSource::ADMITAD        => Cpa\Providers\AdmitAd\Lead\Parser::class,
                 LeadSource::CREDY          => Cpa\Providers\Credy\Lead\Parser::class,
@@ -55,9 +63,18 @@
          */
         public function create()
         {
-            return array_map(static function ($parser): LeadParser {
-                return app()->make($parser);
-            }, $this->filteredParsers());
+            $active_networks = $this->network_repository->all();
+            $parsers = [];
+            foreach ($active_networks as $slug => $network) {
+                // Якщо є парсер для цієї мережі — додаємо
+                if (isset($this->parsers[$slug])) {
+                    $parsers[] = app()->make($this->parsers[$slug]);
+                }
+                // Тут можна додати логіку для динамічних парсерів у майбутньому
+            }
+            // Додаємо універсальний парсер для всіх динамічних мереж
+            $parsers[] = app()->make(UniversalParser::class);
+            return $parsers;
         }
 
         /**

@@ -7,6 +7,7 @@ use Artjoker\Cpa\Interfaces\Lead\LeadParser;
 use Artjoker\Cpa\Lead\LeadService;
 use Artjoker\Cpa\Lead\Parser\Chain;
 use Illuminate\Support\ServiceProvider;
+use App\Repositories\CpaNetworkRepository;
 
 class CpaServiceProvider extends ServiceProvider
 {
@@ -41,6 +42,9 @@ class CpaServiceProvider extends ServiceProvider
         $this->app->singleton('cpaLead', LeadService::class);
         $this->app->singleton('cpaConversion', ConversionService::class);
         $this->app->singleton(LeadParser::class, Chain::class);
+        $this->app->singleton(CpaNetworkRepository::class, function ($app) {
+            return new CpaNetworkRepository();
+        });
     }
 
     /**
