@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories;
+namespace Artjoker\Cpa\Repositories;
 
-use App\Models\CpaNetwork;
+use Artjoker\Cpa\Models\CpaNetwork;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Arr;
 

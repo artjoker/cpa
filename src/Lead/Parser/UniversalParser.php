@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Lead\Parser;
+namespace Artjoker\Cpa\Lead\Parser;
 
-use App\Models\CpaNetwork;
+use Artjoker\Cpa\Models\CpaNetwork;
 use Artjoker\Cpa\Interfaces\Lead\LeadParser;
 use Artjoker\Cpa\Lead\LeadInfo;
 use Artjoker\Cpa\Traits\QueryParams;

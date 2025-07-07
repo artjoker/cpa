@@ -7,7 +7,7 @@ use Artjoker\Cpa\Interfaces\Lead\LeadParser;
 use Artjoker\Cpa\Lead\LeadService;
 use Artjoker\Cpa\Lead\Parser\Chain;
 use Illuminate\Support\ServiceProvider;
-use App\Repositories\CpaNetworkRepository;
+use Artjoker\Cpa\Repositories\CpaNetworkRepository;
 
 class CpaServiceProvider extends ServiceProvider
 {

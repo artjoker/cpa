@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace Artjoker\Cpa\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -31,7 +31,6 @@ class CpaNetwork extends Model
         'name',
         'slug',
         'base_url',
-        'api_key',
         'config',
         'is_active',
     ];

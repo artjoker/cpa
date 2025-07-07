@@ -9,9 +9,9 @@
     use Illuminate\Support\Facades\Config;
     use Illuminate\Support\Facades\Log;
     use Illuminate\Support\Str;
-    use App\Repositories\CpaNetworkRepository;
-    use App\Conversion\UniversalSendService;
-    use App\Models\CpaNetwork;
+    use Artjoker\Cpa\Repositories\CpaNetworkRepository;
+    use Artjoker\Cpa\Conversion\UniversalSendService;
+    use Artjoker\Cpa\Models\CpaNetwork;
 
     class SendServiceFactory
     {

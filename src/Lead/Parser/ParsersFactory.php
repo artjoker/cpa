@@ -8,8 +8,8 @@
     use Artjoker\Cpa\Interfaces\Lead\LeadSource;
     use Illuminate\Support\Facades\Config;
     use Illuminate\Support\Str;
-    use App\Repositories\CpaNetworkRepository;
-    use App\Lead\Parser\UniversalParser;
+    use Artjoker\Cpa\Repositories\CpaNetworkRepository;
+    use Artjoker\Cpa\Lead\Parser\UniversalParser;
 
     class ParsersFactory
     {

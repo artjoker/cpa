@@ -57,6 +57,21 @@
 
         /*
         |--------------------------------------------------------------------------
+        | Logging settings
+        |--------------------------------------------------------------------------
+        |
+        | Enable or disable logging of CPA conversion requests
+        |
+        */
+        'logging'           => [
+            'enabled'        => env('CPA_LOGGING_ENABLED', false),
+            'level'          => env('CPA_LOGGING_LEVEL', 'info'), // debug, info, warning, error
+            'log_requests'   => env('CPA_LOG_REQUESTS', false),    // log outgoing requests
+            'log_responses'  => env('CPA_LOG_RESPONSES', false),   // log responses
+        ],
+
+        /*
+        |--------------------------------------------------------------------------
         | Lead sources
         |--------------------------------------------------------------------------
         |

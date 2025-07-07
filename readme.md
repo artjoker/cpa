@@ -148,21 +148,6 @@ license. Please see the [license file](license.md) for more information.
 ```bash
 php artisan migrate
 ```
-
-### Отримання списку мереж у коді
-
-```php
-use App\Repositories\CpaNetworkRepository;
-
-$networks = app(CpaNetworkRepository::class)->all();
-```
-
-### Отримання налаштувань мережі за slug
-
-```php
-$network = app(CpaNetworkRepository::class)->findBySlug('my-cpa');
-```
-
 ### Використання у сервісах пакету
 
 Всі сервіси (ліди, конверсії, парсери) автоматично працюють з усіма активними мережами (з конфігу та БД).
@@ -173,7 +158,6 @@ $network = app(CpaNetworkRepository::class)->findBySlug('my-cpa');
 - `name` — Людинозрозуміла назва мережі
 - `slug` — Унікальний ідентифікатор (для інтеграції)
 - `base_url` — Базова адреса API мережі
-- `api_key` — Ключ для авторизації в API (якщо потрібен)
 - `config` — Додаткові параметри (JSON)
 - `is_active` — Чи активна мережа
 
@@ -200,9 +184,33 @@ CpaNetwork::create([
     'base_url' => 'https://api.supercpa.com',
     'config' => [
         'method' => 'get',
-        'path' => 'lead',
         'default_params' => [
             'api_key' => 'your-key',
+            'click_id' => '{click_id}',
+        ],
+        'events' => [
+            'register' => [
+                'path' => 'register',
+                'params' => [
+                    'action' => 'register',
+                    'status' => 'pending',
+                ],
+            ],
+            'lead' => [
+                'path' => 'lead',
+                'params' => [
+                    'action' => 'lead',
+                    'status' => 'approved',
+                ],
+            ],
+            'first_loan' => [
+                'path' => 'loan',
+                'params' => [
+                    'action' => 'first_loan',
+                    'conversion_id' => '{conversion_id}',
+                    'amount' => '{amount}',
+                ],
+            ],
         ],
     ],
     'is_active' => true,
@@ -213,6 +221,31 @@ CpaNetwork::create([
 - `method` — HTTP-метод (get/post)
 - `path` — шлях до endpoint (опційно)
 - `default_params` — масив параметрів, які будуть додані до кожного запиту
+- `events` — налаштування для різних типів подій:
+  - `register` — реєстрація користувача
+  - `lead` — лід
+  - `first_loan` — перший кредит
+  - Кожна подія може мати свій `path` та `params`
+  - Підтримуються плейсхолдери: `{conversion_id}`, `{user_id}`, `{amount}`, `{click_id}`
+
+### Логування CPA-запитів
+
+Пакет підтримує детальне логування запитів та відповідей в універсальному сендері. Налаштування логування:
+
+```php
+// config/cpa.php
+'logging' => [
+    'enabled'        => env('CPA_LOGGING_ENABLED', true),
+    'level'          => env('CPA_LOGGING_LEVEL', 'info'), // debug, info, warning, error
+    'log_requests'   => env('CPA_LOG_REQUESTS', true),    // логувати відправлені запити
+    'log_responses'  => env('CPA_LOG_RESPONSES', true),   // логувати відповіді
+],
+```
+**Що логується:**
+- URL та параметри запиту
+- Статус-код та тіло відповіді
+- Помилки при відправці
+- Мережа, подія, конверсія
 
 ### Переваги
 - Не потрібно створювати нові класи для кожної мережі
