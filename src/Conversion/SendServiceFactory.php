@@ -9,6 +9,9 @@
     use Illuminate\Support\Facades\Config;
     use Illuminate\Support\Facades\Log;
     use Illuminate\Support\Str;
+    use Artjoker\Cpa\Repositories\CpaNetworkRepository;
+    use Artjoker\Cpa\Conversion\UniversalSendService;
+    use Artjoker\Cpa\Models\CpaNetwork;
 
     class SendServiceFactory
     {
@@ -16,6 +19,10 @@
          * @var array
          */
         private $senders;
+        /**
+         * @var CpaNetworkRepository
+         */
+        private $network_repository;
         /**
          * @var string
          */
@@ -30,9 +37,11 @@
          *
          * @param string $source
          * @param string $event
+         * @param CpaNetworkRepository|null $network_repository
          */
-        public function __construct(string $source, string $event)
+        public function __construct(string $source, string $event, CpaNetworkRepository $network_repository = null)
         {
+            $this->network_repository = $network_repository ?? app(CpaNetworkRepository::class);
             $this->senders = [
                 LeadSource::SALES_DOUBLER  => [
                     'class'  => Providers\SalesDoubler\SendService::class,
@@ -189,19 +198,18 @@
          */
         public function create()
         {
-            if (!array_key_exists($this->source, $this->filteredSenders())) {
-                Log::info("Trying to send conversion through disabled sender: $this->source");
-                return null;
+            $filtered = $this->filteredSenders();
+            if (isset($filtered[$this->source])) {
+                $sender = app()->make($filtered[$this->source]['class'], $filtered[$this->source]['config'] ?? []);
+                return $sender;
             }
-
-            if (!$this->hasEvent($this->source, $this->event)) {
-                Log::info("Event $this->event not found for $this->source");
-                return null;
+            // Якщо немає специфічного сервісу, шукаємо мережу в БД і використовуємо універсальний сервіс
+            $network = CpaNetwork::where('slug', $this->source)->where('is_active', true)->first();
+            if ($network) {
+                return new UniversalSendService($network);
             }
-
-            $config = app($this->senders[$this->source]['config']['class']);
-
-            return app($this->senders[$this->source]['class'], compact('config'));
+            \Log::info("Trying to send conversion through disabled sender: $this->source");
+            return null;
         }
 
         /**
@@ -209,9 +217,15 @@
          */
         private function filteredSenders()
         {
-            return array_filter($this->senders, function ($sender, $source) {
-                return $this->shouldSend($source);
-            }, ARRAY_FILTER_USE_BOTH);
+            $active_networks = $this->network_repository->all();
+            $filtered = [];
+            foreach ($active_networks as $slug => $network) {
+                if (isset($this->senders[$slug])) {
+                    $filtered[$slug] = $this->senders[$slug];
+                }
+                // Тут можна додати логіку для динамічних сервісів у майбутньому
+            }
+            return $filtered;
         }
 
         /**

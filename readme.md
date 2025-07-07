@@ -132,6 +132,126 @@ If you discover any security related issues, please email author email instead o
 
 license. Please see the [license file](license.md) for more information.
 
+## Динамічне додавання та керування CPA-мережами через БД
+
+### Опис функціоналу
+
+Починаючи з версії 5.0.0, пакет підтримує динамічне додавання, редагування та вимкнення CPA-мереж через базу даних. Це дозволяє:
+- Додавати нові мережі без зміни коду
+- Керувати налаштуваннями мереж через БД
+- Всі сервіси пакету автоматично працюють як із мережами з конфігу, так і з тими, що додані через БД
+
+### Міграція
+
+Виконайте міграцію для створення таблиці налаштувань мереж:
+
+```bash
+php artisan migrate
+```
+### Використання у сервісах пакету
+
+Всі сервіси (ліди, конверсії, парсери) автоматично працюють з усіма активними мережами (з конфігу та БД).
+
+**Зберігання даних про ліди, конверсії, cookies — у тих самих таблицях, що й раніше.**
+
+### Пояснення полів таблиці `cpa_networks`
+- `name` — Людинозрозуміла назва мережі
+- `slug` — Унікальний ідентифікатор (для інтеграції)
+- `base_url` — Базова адреса API мережі
+- `config` — Додаткові параметри (JSON)
+- `is_active` — Чи активна мережа
+
+## Універсальний парсер та сервіс для динамічних CPA-мереж
+
+Починаючи з версії 5.0.0, пакет підтримує автоматичну інтеграцію нових CPA-мереж, доданих у БД, без необхідності створювати окремий парсер чи сервіс для кожної мережі.
+
+### Як це працює
+- Додаєте нову мережу у таблицю `cpa_networks` (через сидер, Tinker, адмінку тощо)
+- Вказуєте:
+    - `slug` — це значення utm_source, яке буде приходити у посиланні
+    - `base_url` — базова адреса API мережі
+    - `config` — масив з параметрами (наприклад, method, path, default_params)
+- Універсальний парсер автоматично визначає мережу за utm_source і створює LeadInfo
+- Універсальний сервіс формує та відправляє запит згідно з шаблоном у config
+
+### Приклад додавання мережі
+```php
+use App\Models\CpaNetwork;
+
+CpaNetwork::create([
+    'name' => 'Super CPA',
+    'slug' => 'supercpa',
+    'base_url' => 'https://api.supercpa.com',
+    'config' => [
+        'method' => 'get',
+        'default_params' => [
+            'api_key' => 'your-key',
+            'click_id' => '{click_id}',
+        ],
+        'events' => [
+            'register' => [
+                'path' => 'register',
+                'params' => [
+                    'action' => 'register',
+                    'status' => 'pending',
+                ],
+            ],
+            'lead' => [
+                'path' => 'lead',
+                'params' => [
+                    'action' => 'lead',
+                    'status' => 'approved',
+                ],
+            ],
+            'first_loan' => [
+                'path' => 'loan',
+                'params' => [
+                    'action' => 'first_loan',
+                    'conversion_id' => '{conversion_id}',
+                    'amount' => '{amount}',
+                ],
+            ],
+        ],
+    ],
+    'is_active' => true,
+]);
+```
+
+### Пояснення config
+- `method` — HTTP-метод (get/post)
+- `path` — шлях до endpoint (опційно)
+- `default_params` — масив параметрів, які будуть додані до кожного запиту
+- `events` — налаштування для різних типів подій:
+  - `register` — реєстрація користувача
+  - `lead` — лід
+  - `first_loan` — перший кредит
+  - Кожна подія може мати свій `path` та `params`
+  - Підтримуються плейсхолдери: `{conversion_id}`, `{user_id}`, `{amount}`, `{click_id}`
+
+### Логування CPA-запитів
+
+Пакет підтримує детальне логування запитів та відповідей в універсальному сендері. Налаштування логування:
+
+```php
+// config/cpa.php
+'logging' => [
+    'enabled'        => env('CPA_LOGGING_ENABLED', true),
+    'level'          => env('CPA_LOGGING_LEVEL', 'info'), // debug, info, warning, error
+    'log_requests'   => env('CPA_LOG_REQUESTS', true),    // логувати відправлені запити
+    'log_responses'  => env('CPA_LOG_RESPONSES', true),   // логувати відповіді
+],
+```
+**Що логується:**
+- URL та параметри запиту
+- Статус-код та тіло відповіді
+- Помилки при відправці
+- Мережа, подія, конверсія
+
+### Переваги
+- Не потрібно створювати нові класи для кожної мережі
+- Всі нові мережі з БД працюють автоматично
+- Для складних кейсів можна додати кастомний парсер/сервіс (має пріоритет над універсальним)
+
 [ico-version]: https://img.shields.io/packagist/v/artjoker/cpa.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/artjoker/cpa.svg?style=flat-square
 [ico-travis]: https://img.shields.io/travis/artjoker/cpa/master.svg?style=flat-square
