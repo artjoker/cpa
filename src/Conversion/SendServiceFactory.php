@@ -199,13 +199,31 @@
         public function create()
         {
             $filtered = $this->filteredSenders();
+            
             if (isset($filtered[$this->source])) {
+                // Перевіряємо, чи існує подія в конфігурації для конфігураційних мереж
+                $source_snake = Str::snake($this->source);
+                $event_config = Config::get("cpa.events.{$this->event}.{$source_snake}");
+                
+                if (empty($event_config) || $event_config === null) {
+                    return null;
+                }
+                
                 $sender = app()->make($filtered[$this->source]['class'], $filtered[$this->source]['config'] ?? []);
                 return $sender;
             }
             // Якщо немає специфічного сервісу, шукаємо мережу в БД і використовуємо універсальний сервіс
             $network = CpaNetwork::where('slug', $this->source)->where('is_active', true)->first();
             if ($network) {
+                // Перевіряємо, чи існує подія в конфігурації мережі
+                $config = $network->config ?? [];
+                $event_config = $config['events'][$this->event] ?? [];
+                
+                // Якщо подія не існує або вимкнена, не створюємо сервіс
+                if (empty($event_config) || (isset($event_config['enabled']) && $event_config['enabled'] === false)) {
+                    return null;
+                }
+                
                 return new UniversalSendService($network);
             }
             \Log::info("Trying to send conversion through disabled sender: $this->source");
@@ -219,12 +237,18 @@
         {
             $active_networks = $this->network_repository->all();
             $filtered = [];
+            
             foreach ($active_networks as $slug => $network) {
-                if (isset($this->senders[$slug])) {
-                    $filtered[$slug] = $this->senders[$slug];
+                // Конвертуємо slug в camelCase для пошуку в senders
+                $sender_key = Str::camel($slug);
+                
+                if (isset($this->senders[$sender_key])) {
+                    // Зберігаємо по camelCase ключу для відповідності з $this->source
+                    $filtered[$sender_key] = $this->senders[$sender_key];
                 }
                 // Тут можна додати логіку для динамічних сервісів у майбутньому
             }
+            
             return $filtered;
         }
 
