@@ -66,14 +66,18 @@
             $active_networks = $this->network_repository->all();
             $parsers = [];
             foreach ($active_networks as $slug => $network) {
+                // Конвертуємо slug в camelCase для пошуку парсера
+                $parser_key = Str::camel($slug);
+                
                 // Якщо є парсер для цієї мережі — додаємо
-                if (isset($this->parsers[$slug])) {
-                    $parsers[] = app()->make($this->parsers[$slug]);
+                if (isset($this->parsers[$parser_key])) {
+                    $parsers[] = app()->make($this->parsers[$parser_key]);
                 }
                 // Тут можна додати логіку для динамічних парсерів у майбутньому
             }
             // Додаємо універсальний парсер для всіх динамічних мереж
             $parsers[] = app()->make(UniversalParser::class);
+            
             return $parsers;
         }
 
