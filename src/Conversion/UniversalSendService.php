@@ -27,8 +27,14 @@ class UniversalSendService implements SendServiceInterface
         $method = $config['method'] ?? 'get';
         
         // Отримуємо налаштування для конкретної події
-        $event = $conversion->event ?? 'purchase';
+        $event = $conversion->event ?? 'register';
         $event_config = $config['events'][$event] ?? [];
+        
+        // Перевіряємо, чи існує подія в конфігурації та чи вона увімкнена
+        if (empty($event_config) || (isset($event_config['enabled']) && $event_config['enabled'] === false)) {
+            // Повертаємо пустий Postback без відправки запиту
+            return new Postback(new Request($method, $url), null);
+        }
         
         // Формуємо шлях
         $path = $event_config['path'] ?? $config['path'] ?? '';
