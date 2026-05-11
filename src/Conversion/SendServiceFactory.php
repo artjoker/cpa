@@ -241,6 +241,10 @@
             foreach ($active_networks as $slug => $network) {
                 // Конвертуємо slug в camelCase для пошуку в senders
                 $sender_key = Str::camel($slug);
+
+                if ($slug === 'cashtan_credit') {
+                    $sender_key = \Artjoker\Cpa\Interfaces\Lead\LeadSource::CASHTAN_CREDIT;
+                }
                 
                 if (isset($this->senders[$sender_key])) {
                     // Зберігаємо по camelCase ключу для відповідності з $this->source

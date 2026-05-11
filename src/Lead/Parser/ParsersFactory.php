@@ -68,6 +68,10 @@
             foreach ($active_networks as $slug => $network) {
                 // Конвертуємо slug в camelCase для пошуку парсера
                 $parser_key = Str::camel($slug);
+
+                if ($slug === 'cashtan_credit') {
+                    $parser_key = \Artjoker\Cpa\Interfaces\Lead\LeadSource::CASHTAN_CREDIT;
+                }
                 
                 // Якщо є парсер для цієї мережі — додаємо
                 if (isset($this->parsers[$parser_key])) {
